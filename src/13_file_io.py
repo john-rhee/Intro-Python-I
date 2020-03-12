@@ -20,3 +20,6 @@ with open('foo.txt','r') as f:
 # sure that it contains what you expect it to contain
 
 # YOUR CODE HERE
+with open('bar.txt','w') as w:
+    write_data = w.write('testing')
+    

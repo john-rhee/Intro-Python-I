@@ -31,28 +31,25 @@ import sys
 import calendar
 from datetime import datetime
 
-mn = input("[month]")
-mn = int(mn)
+args = sys.argv
 
-yr = input("[year]")
-yr = int(yr)
+month = datetime.now().month
+year = datetime.now().year
 
-def c_fucntion():
-  global mn
-  global yr
-  if mn == 1 & yr == 2000:
-    c = calendar.TextCalendar(calendar.SUNDAY)
-    str = c.formatmonth(yr,mn)
-    print(str)
-  else:
-    today = datetime.now()
-    c = calendar.TextCalendar(calendar.SUNDAY)
-    str = c.formatmonth(today.year,today.month)
-    print(str)
-             
-c_fucntion()
+if len(args) == 1:
+    pass
+elif len(args) == 2:
+    month = int(args[1])
+elif len(args) == 3:
+    month = int(args[1])
+    year = int(args[2])
+else:
+    print("ERROR: Should be in format '14_cal.py [month] [year]'")
+    exit(0)
 
-# today = datetime.now()
-# c = calendar.TextCalendar(calendar.SUNDAY)
-# str = c.formatmonth(today.year,today.month)
-# print(str)
+if month < 1 or month > 12:
+    print("ERROR: Invalid month")
+    exit(0)
+
+tc = calendar.TextCalendar()
+tc.prmonth(year, month)
